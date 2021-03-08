@@ -6,7 +6,7 @@ import torch.nn.functional as F
 import os
 
 # params
-n_epochs = 9
+n_epochs = 20
 batch_size_train = 32
 batch_size_test = 1000
 learning_rate = 0.01
@@ -36,16 +36,9 @@ test_loader = torch.utils.data.DataLoader(
                              ])), batch_size=batch_size_test, shuffle=True)
 
 
-network = Net()
-train_losses = []
-train_counter = []
-test_losses = []
-test_counter = [i*len(train_loader.dataset) for i in range(n_epochs + 1)]
-optimizer = optim.SGD(network.parameters(), lr=learning_rate,
-                      momentum=momentum)
-
-
-def train(epoch):
+def train(epoch, network, optimizer):
+    train_counter = []
+    train_losses = []
     network.train()
     for batch_idx, (data, target) in enumerate(train_loader):
         optimizer.zero_grad()
@@ -63,7 +56,8 @@ def train(epoch):
             torch.save(optimizer.state_dict(), 'results/optimizer.pth')
 
 
-def test():
+def test(network):
+    test_losses = []
     network.eval()
     test_loss = 0
     correct = 0
@@ -80,7 +74,9 @@ def test():
 
 
 if __name__ == "__main__":
-    test()
+    network = Net()
+    optimizer = optim.SGD(network.parameters(), lr=learning_rate, momentum=momentum)
+    test(network)
     for epoch in range(1, n_epochs+1):
-        train(epoch)
-        test()
+        train(epoch, network, optimizer)
+        test(network)
