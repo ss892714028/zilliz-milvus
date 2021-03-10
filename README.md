@@ -14,7 +14,7 @@ The ever growing protein sequence/structure database awaits methods that are cap
 
 ## My thoughts..
 * About Ease of use: The installation/setup cannot be more straightforward. For this assignment, I used Ubuntu 20.04 with a virtual machine running on windows, the whole process took less than 20 mins with most of the time waiting for things to download (slow internet T.T).
-* Milvus can be really useful in the field of healthcare/bioinformatics. I work very close to healthcare domain both in academia and in the industry. There is a huge disconnect between the tech and the healthcare community. 
+* Milvus can be really useful in the field of healthcare/bioinformatics. I work very close to healthcare domain both in academia and in the industry. There is still a huge disconnect between the tech and the healthcare community. I will introduce Milvus to some of my professor/MD friends, I will update their feedback here once I have them!
 
 
 ## Appendix
